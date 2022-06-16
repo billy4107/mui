@@ -9,19 +9,10 @@ function Home() {
       <div className="nav">
         <Nav />
       </div>
-
-      {switchValue ? (
-        <div className="side">
-          <SideBar />
-        </div>
-      ) : (
-        <div className="close">
+      <div className={`${switchValue ? "side" : "close"}`}>
         <SideBar />
       </div>
-      )}
-      <div>
-        asd
-      </div>
+      <div>asd</div>
     </div>
   );
 }
