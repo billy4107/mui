@@ -29,9 +29,11 @@ const theme = createTheme({
 
 export const Nav = () => {
   const dispatch = useDispatch();
+  const switchValue = useSelector((state) => state.side.active);
 
   function toggleSwitchHandler() {
     dispatch(toggleSwitch());
+    console.log(switchValue)
   }
   return (
     <ThemeProvider theme={theme}>

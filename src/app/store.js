@@ -3,6 +3,6 @@ import sideBarReducer from "../components/sideBarSlice";
 
 export const store = configureStore({
     reducer: {
-        side: sideBarReducer
+        side: sideBarReducer,
     }
 })

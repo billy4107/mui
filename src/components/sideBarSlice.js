@@ -5,7 +5,7 @@ const initialState = {
 };
 
 const sideBarSlice = createSlice({
-  name: "toggle",
+  name: 'side',
   initialState,
   reducers: {
     toggleSwitch: (state) => {
