@@ -9,11 +9,20 @@ function Home() {
       <div className="nav">
         <Nav />
       </div>
-      
-      {switchValue ? <div className="side">
+
+      {switchValue ? (
+        <div className="side">
+          <SideBar />
+        </div>
+      ) : (
+        <div className="close">
         <SideBar />
-      </div> : ''}
-          </div>
+      </div>
+      )}
+      <div>
+        asd
+      </div>
+    </div>
   );
 }
 
