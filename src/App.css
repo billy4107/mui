@@ -3,3 +3,13 @@
   height: 1000px;
   color: #489c6b;
 }
+
+.nav {
+  z-index: 1;
+  position: relative;
+}
+
+.side {
+  z-index: -1;
+  position: relative;
+}
