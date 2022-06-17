@@ -1,11 +1,9 @@
 import "./App.css";
-import { Nav } from "./components/Nav";
-import { SideBar } from "./components/SideBar";
-import Home from "./pages/Home";
+import { NavAndSide } from "./components/NavAndSide";
 
 function App() {
   return (
-  <Home />
+  <NavAndSide />
   );
 }
 
