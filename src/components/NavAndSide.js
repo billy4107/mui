@@ -22,13 +22,14 @@ import {
     ListItem,
     ListItemButton,
     ListItemIcon,
+    ListSubheader,
 } from "@mui/material";
 import Search from "@mui/icons-material/Search";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleSwitch } from "./sideBarSlice";
-import { Content } from "./Content";
+import { Dashboard } from "./Dashboard";
 
 const drawerWidth = 240;
 const drawerWidthClose = 0;
@@ -56,11 +57,11 @@ export const NavAndSide = () => {
     }
 
     return (
-        <Box sx={{ display: "flex", flexWrap: 'warp' }}>
+        <Box sx={{ display: "flex", minHeight: '1000px'}}>
             <Box sx={{ display: "flex", width: '100%' }}>
                 <CssBaseline />
                 <ThemeProvider theme={theme}>
-                    <AppBar position="fixed" sx={{ bgcolor: "white", zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+                    <AppBar position="fixed" elevation={0} sx={{ bgcolor: "white", zIndex: (theme) => theme.zIndex.drawer + 1 }}>
                         <Toolbar>
                             <Typography variant="h6" component="div" sx={{ color: "black" }}>
                                 Web application
@@ -76,9 +77,10 @@ export const NavAndSide = () => {
                                     ml: 8,
                                     borderRadius: 2,
                                     p: 0.5,
-                                    bgcolor: "#76d275",
+                                    bgcolor: "#EDE7F6",
+                                    color: "#4527A0",
                                     "&:hover": {
-                                        background: "#43a047",
+                                        background: "#4527A0",
                                         color: "white",
                                     },
                                 }}
@@ -92,7 +94,7 @@ export const NavAndSide = () => {
                                 placeholder="Search"
                                 color="success"
                                 size="small"
-                                sx={{ width: 300, ml: 3 }}
+                                sx={{ width: 300, ml: 3, borderRadius: 16 }}
                                 InputProps={{
                                     startAdornment: (
                                         <InputAdornment position="start">
@@ -100,6 +102,7 @@ export const NavAndSide = () => {
                                         </InputAdornment>
                                     ),
                                 }}
+
                             />
 
                             <Box sx={{ flexGrow: 1 }} />
@@ -107,15 +110,15 @@ export const NavAndSide = () => {
                             <IconButton
                                 size="large"
                                 edge="start"
-                                color="green"
                                 aria-label="menu"
                                 sx={{
                                     ml: 8,
                                     borderRadius: 2,
                                     p: 0.5,
-                                    bgcolor: "#76d275",
+                                    bgcolor: "#EDE7F6",
+                                    color: "#4527A0",
                                     "&:hover": {
-                                        background: "#43a047",
+                                        background: "#4527A0",
                                         color: "white",
                                     },
                                 }}
@@ -159,17 +162,77 @@ export const NavAndSide = () => {
                         flexShrink: 0,
                         [`& .MuiDrawer-paper`]: {
                             width: switchValue ? drawerWidth : drawerWidthClose,
-                            transition: "0.2s",
-                            boxSizing: 'border-box'
+                            transition: "0.1s",
+                            boxSizing: 'border-box',
+                            border: 0,
+                            // paddingRight: 2,
+                            // paddingLeft: 2
                         },
                     }}
                 >
                     <Toolbar />
                     <Box sx={{ overflow: "hidden" }}>
-                        <List sx={{ minWidth: 239 }}>
-                            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                        <List sx={{ minWidth: '100%' }}
+                            subheader={
+                                <ListSubheader component="div" id="Dashboard">
+                                    Dashboard
+                                </ListSubheader>
+                            }>
+                            <ListItem disablePadding>
+                                <ListItemButton sx={{
+                                    "&:hover": {
+                                        background: "#EDE7F6",
+                                        transition: "0.1s",
+                                        color: "#4527A0",
+                                        fontWeight: 'bold'
+                                    },
+                                }}>
+                                    <ListItemIcon>
+                                        <InboxIcon />
+                                    </ListItemIcon>
+                                    <ListItemText>Dashboard</ListItemText>
+                                </ListItemButton>
+                            </ListItem>
+                        </List>
+                        <Divider variant="middle" />
+                        <List sx={{ minWidth: '100%' }}
+                            subheader={
+                                <ListSubheader component="div" id="Pages">
+                                    Pages
+                                </ListSubheader>
+                            }>
+                            <ListItem disablePadding>
+                                <ListItemButton sx={{
+                                    "&:hover": {
+                                        background: "#EDE7F6",
+                                        transition: "0.1s",
+                                        color: "#4527A0",
+                                        fontWeight: 'bold'
+                                    },
+                                }}>
+                                    <ListItemIcon>
+                                        <InboxIcon />
+                                    </ListItemIcon>
+                                    <ListItemText>Authentication</ListItemText>
+                                </ListItemButton>
+                            </ListItem>
+                        </List>
+                        <Divider variant="middle" />
+                        <List sx={{ minWidth: '100%' }} subheader={
+                            <ListSubheader component="div" id="Utilities">
+                                Utilities
+                            </ListSubheader>
+                        }>
+                            {['Typography', 'Color', 'Shadow', 'Icons'].map((text, index) => (
                                 <ListItem key={text} disablePadding>
-                                    <ListItemButton>
+                                    <ListItemButton sx={{
+                                        "&:hover": {
+                                            background: "#EDE7F6",
+                                            transition: "0.1s",
+                                            color: "#4527A0",
+                                            fontWeight: 'bold'
+                                        },
+                                    }}>
                                         <ListItemIcon>
                                             {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                                         </ListItemIcon>
@@ -178,11 +241,18 @@ export const NavAndSide = () => {
                                 </ListItem>
                             ))}
                         </List>
-                        <Divider />
-                        <List sx={{ minWidth: 239 }}>
-                            {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                        <Divider variant="middle" />
+                        <List sx={{ minWidth: '100%' }}>
+                            {['Sample Page', 'Documentation'].map((text, index) => (
                                 <ListItem key={text} disablePadding>
-                                    <ListItemButton>
+                                    <ListItemButton sx={{
+                                        "&:hover": {
+                                            background: "#EDE7F6",
+                                            transition: "0.1s",
+                                            color: "#4527A0",
+                                            fontWeight: 'bold'
+                                        },
+                                    }}>
                                         <ListItemIcon>
                                             {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                                         </ListItemIcon>
@@ -194,37 +264,11 @@ export const NavAndSide = () => {
                     </Box>
                 </Drawer>
 
-                <Box component="main" sx={{ flexGrow: 1, p: 3, width: '100%' }}>
+                <Box sx={{ flexGrow: 1, p: 3 }}>
                     <Toolbar />
-                    <Content />
-                    <Typography paragraph>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-                        enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-                        imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-                        Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-                        Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-                        adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-                        nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-                        leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-                        feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-                        consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-                        sapien faucibus et molestie ac.
-                    </Typography>
-                    <Typography paragraph>
-                        Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-                        eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-                        neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
-                        tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
-                        sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-                        tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
-                        gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-                        et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
-                        tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-                        eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-                        posuere sollicitudin aliquam ultrices sagittis orci a.
-                    </Typography>
+                    <Dashboard />
                 </Box>
+                
 
             </Box>
         </Box>

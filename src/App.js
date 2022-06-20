@@ -1,4 +1,3 @@
-import "./App.css";
 import { NavAndSide } from "./components/NavAndSide";
 
 function App() {
